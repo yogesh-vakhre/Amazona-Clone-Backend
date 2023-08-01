@@ -7,7 +7,7 @@ const authMiddleware = require("../middleware/auth.middleware.js");
 // Create a new product
 router.post("/", authMiddleware, productController.create);
 
-// Retrieve all categories
+// Retrieve all products
 router.get("/", authMiddleware, productController.findAll);
 
 // Create single product for reviews
