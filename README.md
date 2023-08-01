@@ -2,7 +2,7 @@
 
 ### 1) Clone project
 
-`git clone https://gitlab.com/yogesh-vakhre/amazon-clone-backend.git`
+`git clone https://github.com/yogesh-vakhre/amazon-clone-backend.git`
 
 ### 2) Go to root project
 
