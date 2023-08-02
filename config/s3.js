@@ -1,0 +1,17 @@
+const {
+  BUCKET_NAME,
+  AWS_REGION,
+  ACCESS_KEY_ID,
+  SECRET_ACCESS_KEY,
+  AWS_BUCKET_URL,
+  AWS_UPLOAD_PATH,
+} = process.env;
+
+module.exports = {
+  BUCKET_NAME,
+  AWS_REGION,
+  ACCESS_KEY_ID,
+  SECRET_ACCESS_KEY,
+  AWS_BUCKET_URL,
+  AWS_UPLOAD_PATH,
+};
