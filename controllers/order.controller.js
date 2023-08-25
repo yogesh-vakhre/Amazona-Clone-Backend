@@ -34,11 +34,11 @@ exports.create = catchAsync(async (req, res, next) => {
 
 // Retrieve all Order from the database.
 exports.findAll = catchAsync(async (req, res, next) => {
-  const order = await Order.find().populate("user", "name");
+  const orders = await Order.find().populate("user", "name");
 
   res.status(200).json({
     status: "success",
-    order,
+    orders,
   });
 });
 
@@ -77,6 +77,7 @@ exports.deliverUpdate = catchAsync(async (req, res, next) => {
     { isDelivered: true, deliveredAt: Date.now() },
     {
       useFindAndModify: false,
+      new: true,
     }
   );
   if (!order) {
@@ -108,6 +109,7 @@ exports.payUpdate = catchAsync(async (req, res, next) => {
     },
     {
       useFindAndModify: false,
+      new: true,
     }
   );
   if (!order) {

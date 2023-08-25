@@ -39,9 +39,16 @@ exports.getUserProfile = catchAsync(async (req, res, next) => {
 
 // Suspend User
 exports.suspendUser = catchAsync(async (req, res, next) => {
-  const user = await User.findByIdAndUpdate(req.params.userId, {
-    status: "Suspended",
-  });
+  const user = await User.findByIdAndUpdate(
+    req.params.userId,
+    {
+      status: "Suspended",
+    },
+    {
+      useFindAndModify: false,
+      new: true,
+    }
+  );
 
   if (!user) {
     return next(new AppError("No user found with this ID", 404));
@@ -54,9 +61,16 @@ exports.suspendUser = catchAsync(async (req, res, next) => {
 
 // Unsuspend User
 exports.unsuspendUser = catchAsync(async (req, res, next) => {
-  const user = await User.findByIdAndUpdate(req.params.userId, {
-    status: "Active",
-  });
+  const user = await User.findByIdAndUpdate(
+    req.params.userId,
+    {
+      status: "Active",
+    },
+    {
+      useFindAndModify: false,
+      new: true,
+    }
+  );
 
   if (!user) {
     return next(new AppError("No user found with this ID", 404));
@@ -82,9 +96,16 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
 
 // Block User
 exports.blockUser = catchAsync(async (req, res, next) => {
-  const user = await User.findByIdAndUpdate(req.params.userId, {
-    status: "Blocked",
-  });
+  const user = await User.findByIdAndUpdate(
+    req.params.userId,
+    {
+      status: "Blocked",
+    },
+    {
+      useFindAndModify: false,
+      new: true,
+    }
+  );
 
   if (!user) {
     return next(new AppError("No user found with this ID", 404));
@@ -97,9 +118,16 @@ exports.blockUser = catchAsync(async (req, res, next) => {
 
 // Unblock User
 exports.unblockUser = catchAsync(async (req, res, next) => {
-  const user = await User.findByIdAndUpdate(req.params.userId, {
-    status: "Active",
-  });
+  const user = await User.findByIdAndUpdate(
+    req.params.userId,
+    {
+      status: "Active",
+    },
+    {
+      useFindAndModify: false,
+      new: true,
+    }
+  );
 
   if (!user) {
     return next(new AppError("No user found with this ID", 404));
