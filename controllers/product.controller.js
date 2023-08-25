@@ -77,6 +77,7 @@ exports.update = catchAsync(async (req, res, next) => {
 
   const product = await Product.findByIdAndUpdate(id, req.body, {
     useFindAndModify: false,
+    new: true,
   });
   if (!product) {
     return next(new AppError("Product Not Found!", 404));

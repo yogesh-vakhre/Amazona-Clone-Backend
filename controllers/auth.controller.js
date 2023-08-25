@@ -258,7 +258,11 @@ exports.getUserInfo = catchAsync(async (req, res, next) => {
   console.log(req.user._id);
   const data = await User.findById(req.user._id);
 
-  res.status(200).json(data);
+  res.status(200).json({
+    status: "success",
+    user: data,
+    message: "Profile updated successfully",
+  });
 });
 
 // Edit User information
@@ -271,5 +275,9 @@ exports.editUserInfo = catchAsync(async (req, res, next) => {
   const data = await user.save({
     validateBeforeSave: false,
   });
-  res.status(200).json(data);
+  res.status(200).json({
+    status: "success",
+    message: "Profile updated successfully",
+    user: data,
+  });
 });
