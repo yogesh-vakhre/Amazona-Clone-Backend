@@ -30,7 +30,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
   }
 
   // send email verification link
-  eventEmitter.emit("sendEmail", {
+  eventEmitter.emit("sendVerificationEmail", {
     user,
     origin: req.headers.origin,
   });
@@ -140,8 +140,9 @@ exports.checkEmailVerification = catchAsync(async (req, res, next) => {
     user.status = "Active";
     await user.save({ validateBeforeSave: false });
     res.status(200).json({
-      status: 200,
+      status: "success",
       token: generateToken(user._id),
+      user,
       message: "Email verified successfully",
     });
   } else {
@@ -181,7 +182,8 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     });
     res.status(200).json({
       status: "success",
-      message: "Check your email for reset password link",
+      message:
+        "We sent reset password link to your email.Check your email for reset password link",
     });
   } catch (err) {
     user.passwordResetToken = undefined;
@@ -216,8 +218,9 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   user.passwordResetToken = undefined;
   await user.save();
   res.status(200).json({
-    status: 200,
+    status: "success",
     token: generateToken(user._id),
+    user,
   });
 });
 

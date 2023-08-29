@@ -8,7 +8,7 @@ const authMiddleware = require("../middleware/auth.middleware.js");
 router.post("/", authMiddleware, productController.create);
 
 // Retrieve all products
-router.get("/", authMiddleware, productController.findAll);
+router.get("/", productController.findAll);
 
 // Create single product for reviews
 router.post(
@@ -24,7 +24,7 @@ router.get("/categories", authMiddleware, productController.productCategories);
 router.get("/:id", authMiddleware, productController.findById);
 
 // Retrieve a single product with slug
-router.get("/slug/:slug", authMiddleware, productController.findOne);
+router.get("/slug/:slug", productController.findOne);
 
 // Update a product with id
 router.patch("/:id", authMiddleware, productController.update);
