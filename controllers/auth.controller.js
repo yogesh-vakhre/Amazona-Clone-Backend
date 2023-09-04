@@ -264,7 +264,7 @@ exports.getUserInfo = catchAsync(async (req, res, next) => {
   res.status(200).json({
     status: "success",
     user: data,
-    message: "Profile updated successfully",
+    message: "Profile show successfully",
   });
 });
 
